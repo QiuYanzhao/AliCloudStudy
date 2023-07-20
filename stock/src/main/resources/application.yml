@@ -1,0 +1,13 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: stock-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        discovery:
+          username: nacos # default username
+          password: nacos # default password
+          namespace: public # 命名空间， 默认为public
