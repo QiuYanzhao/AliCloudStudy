@@ -1,16 +1,6 @@
 server:
   port: 8080
-spring:
-  application:
-    name: order-service
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 127.0.0.1:8848
-        discovery:
-          username: nacos # default username
-          password: nacos # default password
-          namespace: public # 命名空间， 默认为public
+
 stock-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule # nacos实现的自定义权重负载均衡
@@ -19,3 +9,13 @@ ribbon:
   eager-load:
     enabled: true # 开启负载均衡的预加载
     clients: stock-service # 预加载的服务名
+
+feign:
+  client:
+    config:
+      stock-service:
+        connectTimeout: 5000  # 设置feign的连接超时时间
+        readTimeout: 5000 # 设置feign的请求超时时间
+        loggerLevel: DEBUG # 设置feign的日志级别
+        requestInterceptors: # 设置feign的请求拦截器
+          - com.example.filter.FeignFilter
