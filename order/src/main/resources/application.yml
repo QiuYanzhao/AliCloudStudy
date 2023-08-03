@@ -16,6 +16,15 @@ feign:
       stock-service:
         connectTimeout: 5000  # 设置feign的连接超时时间
         readTimeout: 5000 # 设置feign的请求超时时间
-        loggerLevel: DEBUG # 设置feign的日志级别
+        loggerLevel: BASIC # 设置feign的日志级别
         requestInterceptors: # 设置feign的请求拦截器
           - com.example.filter.FeignFilter
+  sentinel:
+    enabled: true # 开启feign的sentinel支持
+
+spring:
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8858 # 配置sentinel dashboard的地址
+        port: 8719 # 这里的 spring.cloud.sentinel.transport.port 端口配置会在应用对应的机器上启动一个 Http Server，该 Server 会与 Sentinel 控制台做交互。比如 Sentinel 控制台添加了1个限流规则，会把规则数据 push 给这个 Http Server 接收，Http Server 再将规则注册到 Sentinel 中。
