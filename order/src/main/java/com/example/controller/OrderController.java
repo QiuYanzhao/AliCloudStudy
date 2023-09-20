@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RestController
 @RefreshScope // 动态刷新配置
@@ -19,7 +21,7 @@ public class OrderController {
     @Autowired
     private StockClient stockClient;
 
-    // @Value可以获取到nacos配置中心的配置，但是无法动态刷新,需要加上@RefreshScope才可以动态刷新
+    // @Value可以获取到nacos配置中心的配置，但是无法动态刷新,需要加]上@RefreshScope才可以动态刷新
     @Value("${user.name}")
     private String name;
 
