@@ -1,0 +1,22 @@
+# 如果需要使用nacos配置中心的功能，需要在bootstrap.yml中配置nacos的相关信息
+spring:
+  application:
+    name: order-service # nacos会根据服务名来获取对应dataId的配置文件，如果dataId与服务名不一致，需要在bootstrap.yml中配置
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        discovery:
+          username: nacos # default username
+          password: nacos # default password
+          namespace: public # 命名空间， 默认为public
+      config:
+        file-extension: yaml # nacos默认使用的是properties格式的配置，如果服务端使用的配置文件是其他格式的，需要在这里单独配置
+        extension-configs:
+          - data-id: order-service.yml # 配置文件的dataId
+            group: DEFAULT_GROUP # 配置文件的分组
+            refresh: true # 是否开启自动刷新
+
+
+# 配置文件的优先级
+# profile > 默认配置文件 > extension-configs > shared-configs
