@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.swing.tree.TreeNode;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,6 +31,7 @@ public class OrderController {
     @GetMapping("/order")
     public void order() {
         stockClient.stock();
+        
         System.err.println("order");
     }
 
@@ -51,11 +54,10 @@ public class OrderController {
      * 特别地，若 blockHandler 和 fallback 都进行了配置，则被限流降级而抛出 BlockException 时只会进入 blockHandler 处理逻辑。若未配置 blockHandler、fallback 和 defaultFallback，则被限流降级时会将 BlockException 直接抛出（若方法本身未定义 throws BlockException 则会被 JVM 包装一层 UndeclaredThrowableException）。
      */
 
-    @GetMapping("/sentinel")
-    @SentinelResource(value = "sentinel", blockHandler = "sentinelBlockHandler", fallback = "sentinelFallback")
-    public String sentinel() {
-        ArrayList<Object> objects = Lists.newArrayList();
-
+    @GetMapping("/sentinel/{id}")
+    @SentinelResource(value = "/sentinel/{id}", blockHandler = "sentinelBlockHandler", fallback = "sentinelFallback")
+    public String sentinel(@PathVariable String id) {
+        System.err.println(id);
         return "sentinel";
     }
 
