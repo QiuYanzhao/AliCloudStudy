@@ -9,6 +9,9 @@ import java.util.Map;
 import lombok.Data;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @description: jackson使用示例
+ */
 @RestController
 public class JacksonExample {
 
