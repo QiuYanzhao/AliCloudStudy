@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/class-diagram'
+
+participant OA
+participant rateLimitfilter
+participant crm_pc
+participant wconfig
+participant redis
+
+
+OA -> rateLimitfilter: 访问,请求过滤
+rateLimitfilter -> wconfig: 查询OA白名单
+wconfig --> rateLimitfilter
+rateLimitfilter -> crm_pc: 白名单放行
+rateLimitfilter -> redis: 查询OA访问次数
+redis --> rateLimitfilter
+rateLimitfilter -> redis: 未触发限流阈值，访问次数+1
+rateLimitfilter -> crm_pc: 未触发限流阈值放行
+rateLimitfilter -> OA: 触发限流阈值,拒绝访问
+
+@enduml
