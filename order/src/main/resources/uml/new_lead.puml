@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+actor zcm
+participant lead
+
+title 新增线索
+
+zcm -> lead: 新增线索param
+lead -> lead: 新增线索
+
+zcm -> lead: （行业 + city）匹配职业
+lead -> zcm: 匹配结果
+
+
+@enduml
