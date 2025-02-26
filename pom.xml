@@ -95,7 +95,26 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <tagNameFormat>release-by-maven-${version}</tagNameFormat>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+    <scm>
+        <!--可读的SCM地址-->
+        <!--<connection>scm:git:https://github.com/FutaoSmile/starter-fustack</connection>-->
+        <!--可写的SCM地址-->
+        <developerConnection>scm:git:git@github.com:QiuYanzhao/AliCloudStudy.git</developerConnection>
+        <!--可以在浏览器中访问的scm地址-->
+        <!--<url>https://github.com/FutaoSmile/starter-fustack</url>-->
+        <!--设置tagName-->
+        <tag>V-release-0.0.1</tag>
+    </scm>
 
 </project>
