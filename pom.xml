@@ -13,7 +13,7 @@
     </parent>
     <groupId>com.example</groupId>
     <artifactId>AliCloudStudy</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>AliCloudStudy</name>
     <description>AliCloudStudy</description>
     <packaging>pom</packaging>
@@ -112,7 +112,7 @@
         <!--可以在浏览器中访问的scm地址-->
         <!--<url>https://github.com/FutaoSmile/starter-fustack</url>-->
         <!--设置tagName-->
-        <tag>release-by-maven-0.0.1-SNAPSHOT</tag>
+        <tag>V-release-0.0.1</tag>
     </scm>
 
 </project>
