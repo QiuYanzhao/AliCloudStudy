@@ -99,6 +99,7 @@
                 <version>3.0.1</version>
                 <configuration>
                     <tagNameFormat>release-by-maven-${version}</tagNameFormat>
+                    <pushChanges>true</pushChanges> <!-- 禁止自动推送更改到远程仓库 -->
                 </configuration>
             </plugin>
         </plugins>
